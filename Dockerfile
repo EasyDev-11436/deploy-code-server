@@ -1,5 +1,5 @@
 # Start from the code-server Debian base image
-FROM codercom/code-server:3.10.2
+FROM codercom/code-server:4.0.2
 
 USER coder
 
@@ -40,3 +40,8 @@ ENV PORT=8080
 # Use our custom entrypoint script first
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
+
+#Install NodeJS
+
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_17.x | sudo bash -
+RUN sudo apt-get install -y 
